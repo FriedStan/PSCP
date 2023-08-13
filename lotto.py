@@ -32,7 +32,6 @@ def lotto_checker():
         money += 4_000
     if your_lotto in (low, high):
         money += 100_000
-    print(low, high)
     print(money)
 
 
