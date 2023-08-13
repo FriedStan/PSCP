@@ -3,21 +3,18 @@
 
 def sequencer_30(size, amount):
     """Do as <e>judge says"""
-    length = (amount * size) + amount - 1
-    for _ in range(size):
-        for i in range(length):
-            if (i + 1) % (size + 1) == 0:
-                print(" ", end="")
-            else:
-                print("*", end="")
-        print()
+    text = ""
     for row in range(size):
-        for col in range(size):
-            if row == col or col in (0, size - 1):
-                print("*", end="")
-            else:
-                print(" ", end="")
-        print()
-
+        for _ in range(amount):
+            count = 0
+            for col in range(size):
+                if row in (0, col, size - 1, size - col - 1) or count in (0, size - 1):
+                    text += "*"
+                else:
+                    text += " "
+                count += 1
+            text += " "
+        text += "\n"
+    print(text)
 
 sequencer_30(int(input()), int(input()))
