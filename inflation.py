@@ -3,12 +3,13 @@
 
 def inflater(org_price, year):
     """Begin inflate"""
-    inflate_rate = 3.81 / 100 # 3.81%
-    inflate = 0
+    inflate_rate = 0.0381  # 3.81%
+    price = int(org_price * 100)
     for _ in range(year):
-        inflate += (org_price + inflate) * inflate_rate
-        inflate = (int(inflate * 100)) / 100
-    print(org_price + inflate)
+        price = price + price * inflate_rate
+        decimal = str(price).find(".")
+        price = int(str(price)[:decimal])
+    print("{:.2f}".format(price))
 
 
 inflater(float(input()), int(input()))
