@@ -1,66 +1,39 @@
-<<<<<<< HEAD
-"""Blackjack"""
-
-
-def blackjacktifyer(card):
-    """Calculate blackjack's points"""
-    total = 0
-    a_count = 0
-    if card.isdecimal():
-        total += int(card)
-    elif card.lower() in "jqk":
-        total += 10
-    elif card.lower() == "a":
-        total += 1
-        a_count += 1
-    else:
-        pass
-=======
 """BlackJack"""
 
 
-def blackjacktifyer(this_hand):
-    """Calculate blackjack's points"""
-    total = 0
-    a_count = 0
-    for card in this_hand:
-        if card.isdecimal():
-            total += int(card)
-        elif card.lower() in "jqk":
-            total += 10
-        elif card.lower() == "a":
-            total += 1
-            a_count += 1
+def blackjacktifyer(hand):
+    """Count blackjack score"""
+    score = 0
+    for card in hand:
+        if card in "TJQK":
+            score += 10
+        elif card.isdigit():
+            score += int(card)
         else:
             pass
->>>>>>> 9bf373e (add more files)
-    while a_count != 0:
-        if total <= 21 and (total + 10) <= 21:
-            total += 10
+    for i in range(hand.count("A")):
+        score += 1
+        if score + 10 <= 21 and i == hand.count("A") - 1:
+            score += 10
+    return score
+
+
+def get_card(size):
+    """Get card"""
+    hand = ""
+    for _ in range(size):
+        card = str(input()).upper()
+        if card == "10":
+            hand += "T"
         else:
-            pass
-        a_count -= 1
-    return total
+            hand += card
+    return hand
 
 
 def main():
-    """Get cards list from user"""
-    hand_size = int(input())
-<<<<<<< HEAD
-    total = 0
-    while hand_size != 0:
-        card = str(input())
-        total += blackjacktifyer(card)
-        hand_size -= 1
-=======
-    hand_card = []
-    while hand_size != 0:
-        card = str(input())
-        hand_card.append(card)
-        hand_size -= 1
-    total = blackjacktifyer(hand_card)
->>>>>>> 9bf373e (add more files)
-    return print(total)
+    """Main func"""
+    hand = get_card(int(input()))
+    print(blackjacktifyer(hand))
 
 
 main()
