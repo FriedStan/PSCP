@@ -23,15 +23,19 @@ def lotto_checker():
     if prize_1 == "000000":
         low += "9"
     if your_lotto == prize_1:
-        money += 6_000_000
+        money += 6000000
     if your_lotto[4:7] == prize_2back:
-        money += 2_000
-    if your_lotto[0:3] in (prize_3front_1, prize_3front_2):
-        money += 4_000
-    if your_lotto[3:7] in (prize_3back_1, prize_3back_2):
-        money += 4_000
+        money += 2000
+    if your_lotto[0:3] == prize_3front_1:
+        money += 4000
+    if your_lotto[0:3] == prize_3front_2:
+        money += 4000
+    if your_lotto[3:7] == prize_3back_1:
+        money += 4000
+    if your_lotto[3:7] == prize_3back_2:
+        money += 4000
     if your_lotto in (low, high):
-        money += 100_000
+        money += 100000
     print(money)
 
 
