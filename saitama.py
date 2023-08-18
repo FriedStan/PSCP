@@ -8,6 +8,7 @@ def my_mc(num_1, num_2):
 
 
 def saitama_workout():
+    """Saitama workout"""
     push_up = int(input())
     sit_up = int(input())
     squat = int(input())
