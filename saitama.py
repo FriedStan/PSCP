@@ -17,7 +17,7 @@ def saitama_workout():
     sit_day = ceil(sit_up / int(input()))
     run_day = ceil(run / int(input()))
     squat_day = ceil(squat / int(input()))
-    all_workout = "{},{},{},{}".format(push_day, sit_day, squat_day, run_day)
+    all_workout = "{},{},{},{}|".format(push_day, sit_day, squat_day, run_day)
     biggest = 0
     number = ""
     for things in all_workout:
