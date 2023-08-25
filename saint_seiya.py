@@ -1,20 +1,41 @@
 """Gotta catch them all"""
+from math import ceil
 
 
-def ryu_sei_ken(punch_count):
+def ryu_sei_ken(punch_count, times):
     """ペガサス流星拳, Pegasasu Ryu Sei Ken 165p per sec"""
-    return punch_count + 165
+    return punch_count + (165 * times)
 
 
-def sui_sei_ken(punch_count):
+def sui_sei_ken(punch_count, times):
     """ペガサス彗星拳, Pegasasu Sui Sei Ken"""
-    return punch_count + 1
+    return punch_count + (1 * times)
 
 
-def rolling_crash(punch_count):
+def rolling_crash(punch_count, times):
     """ペガサスローリングクラッシュ, Pegasasu Rolling Crash"""
-    return punch_count + 12
+    return punch_count + (12 * times)
 
 
 def begin_punch(sec, punch):
-    """"""
+    """T4E"""
+    sui_ken = int(int(punch / 165) / 2)
+    ryu_ken = ceil((punch - sui_ken) / 165)
+    if ceil(int(punch - (ryu_ken * 165)) / 2) >= 0:
+        sui_ken = ceil(int(punch - (ryu_ken * 165)) / 2)
+    if ryu_ken > int(sec / 2) - int(sec / 6):
+        ryu_ken = int(sec / 2) - int(sec / 6)
+    roll_ken = sec - ((ryu_ken * 2) + (sui_ken * 2) + 1)
+    if roll_ken < 0 or roll_ken > sec:
+        roll_ken = 0
+    attack = 0
+    attack = ryu_sei_ken(attack, ryu_ken)
+    attack = sui_sei_ken(attack, sui_ken)
+    attack = rolling_crash(attack, roll_ken)
+    print("Ryu", ryu_ken)
+    print("Sui", sui_ken)
+    print("Roll", roll_ken)
+    print(attack)
+
+
+begin_punch(int(input()), int(input()))
