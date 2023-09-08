@@ -8,10 +8,7 @@ def build_deck():
     card_deck = []
     for char in rank:
         for things in face:
-            if char == "T":
-                card_deck.append("10" + things)
-            else:
-                card_deck.append(char + things)
+            card_deck.append((char + things).replace("T", "10"))
     return card_deck
 
 
