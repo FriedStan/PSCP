@@ -12,16 +12,14 @@ def greatest_medal(country):
         medal_list.append(
             [current[0], [int(current[1]), int(current[2]), int(current[3])]])
     medal_list.sort()
-    for things in medal_list:
-        things[0], things[1] = things[1], things[0]
-    medal_list.sort(reverse=True, key=lambda x: x[0])
+    medal_list.sort(reverse=True, key=lambda x: x[1])
     for things in medal_list:
         if prev != things[0]:
             order = count
-        print(order, things[1], *things[0], sep=" ", end=" ")
-        print(sum(things[0]))
+        print(order, things[0], *things[1], sep=" ", end=" ")
+        print(sum(things[1]))
         count += 1
-        prev = things[0]
+        prev = things[1]
 
 
 greatest_medal(int(input()))
