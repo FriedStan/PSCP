@@ -68,6 +68,9 @@ def netflix():
     requirement_met = max_user >= user and max_screen >= screen
     if ultra_hd == "Yes" and not requirement_met or \
         (max(screen, user) >= 3 and "Yes" in (laptop, hd_res, ultra_hd)):
+        if ultra_hd == "Yes":
+            screen += ((screen // 4) + 1) * 4 - screen
+            user += ((user // 4) + 1) * 4 - user
         total, requirement_met, sub_premium = premium(screen, user, max_user, max_screen, total)
         user -= sub_premium * 4
         screen -= sub_premium * 4
@@ -80,7 +83,7 @@ def netflix():
         total, requirement_met, sub_basic = basic(screen, user, max_user, max_screen, total)
         user -= sub_basic
         screen -= sub_basic
-    if not requirement_met:
+    if not requirement_met and "No" == laptop == hd_res == ultra_hd:
         total, requirement_met, sub_basic = mobile(screen, user, max_user, max_screen, total)
     print("Total = {} THB".format(total))
 
