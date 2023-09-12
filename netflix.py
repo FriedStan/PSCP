@@ -66,11 +66,13 @@ def netflix():
     max_user = bool(inf_mov) * 0
     max_screen = bool(mobile_use) * 0
     requirement_met = max_user >= user and max_screen >= screen
-    if ultra_hd == "Yes" and not requirement_met or screen >= 4 or user >= 4:
+    if ultra_hd == "Yes" and not requirement_met or \
+        (max(screen, user) >= 3 and "Yes" in (laptop, hd_res, ultra_hd)):
         total, requirement_met, sub_premium = premium(screen, user, max_user, max_screen, total)
         user -= sub_premium * 4
         screen -= sub_premium * 4
-    if hd_res == "Yes" and not requirement_met:
+    if hd_res == "Yes" and not requirement_met or \
+        (max(screen, user) == 2 and "Yes" in (laptop, hd_res)):
         total, requirement_met, sub_standard = standard(screen, user, max_user, max_screen, total)
         user -= sub_standard * 2
         screen -= sub_standard * 2
