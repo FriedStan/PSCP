@@ -14,7 +14,7 @@ def greatest_medal(country):
     medal_list.sort()
     medal_list.sort(reverse=True, key=lambda x: x[1])
     for things in medal_list:
-        if prev != things[0]:
+        if prev != things[1]:
             order = count
         print(order, things[0], *things[1], sep=" ", end=" ")
         print(sum(things[1]))
