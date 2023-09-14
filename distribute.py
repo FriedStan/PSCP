@@ -11,7 +11,7 @@ def distribute(money, child):
             not_8 = child - successfull_8
             if money == 3 and not_8 == 1:
                 successfull_8 -= 1
-            if not_8 == 0 and money != 0:
+            if not_8 == 0:
                 successfull_8 -= 1
         print(successfull_8)
     else:
