@@ -4,7 +4,6 @@
 def decoder(shift_value, text):
     """Decoder the text by shift value"""
     alphabeth = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-    text = list(text)
     for i, char in enumerate(text):
         if char.isalpha():
             shift_to = (alphabeth.index(char.upper()) + shift_value) % 26
@@ -15,4 +14,4 @@ def decoder(shift_value, text):
     print(*text, sep="")
 
 
-decoder(int(input()), str(input()))
+decoder(int(input()), list(str(input())))
