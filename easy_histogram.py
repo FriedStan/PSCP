@@ -3,20 +3,15 @@
 
 def histogram(text):
     """Do as <e>judge says"""
-    text_list = []
-    text_dict = {}
+    char_dict = {}
     for char in text:
-        if char not in text_list and char.isalpha():
-            text_list.append(char.lower())
-    text_list.sort()
-    for char in text_list:
-        if char.lower() not in text_dict and char.isalpha():
-            text_dict.update({char.lower(): [char.lower(), char.upper()]})
-    for _, alpha in text_dict.items():
-        if text.count(alpha[0]) >= 1:
-            print("{} = {}".format(alpha[0], text.count(alpha[0])))
-        if text.count(alpha[1]) >= 1:
-            print("{} = {}".format(alpha[1], text.count(alpha[1])))
+        if char not in char_dict:
+            char_dict.update({char: 1})
+        else:
+            char_dict[char] += 1
+    sorted_dict = sorted(char_dict, key=lambda x: (x.lower(), x.swapcase()))
+    for things in sorted_dict:
+        print("{} = {}".format(things, char_dict.get(things)))
 
 
-histogram(str(input()))
+histogram(str(input()).replace(" ", ""))
