@@ -3,18 +3,15 @@
 
 def kfc(all_unit, legs):
     """The Possibilities Are Endless"""
-    if legs % 2 == 0:
-        bird = min(legs // 2, all_unit)
-        legs_have = bird * 2
-        while legs_have < legs < all_unit * 4:
-            bird -= 1
-            legs_have += 2
-        if (bird * 2) + ((all_unit - bird) * 4) == legs:
-            print(all_unit - bird, bird)
-        else:
-            print("Impossible")
-    else:
-        print("Impossible")
+    bird = min(legs // 2, all_unit)
+    bird_leg = bird * 2
+    need_leg = legs - bird_leg
+    need_bunny = need_leg // 2
+    new_bird = abs(bird - need_bunny)
+    valid = (need_bunny * 4) + (new_bird * 2) == legs and need_bunny + new_bird == all_unit
+    #print(bird, bird_leg)
+    #print(need_leg, need_bunny)
+    print("{} {}".format(need_bunny, new_bird) if valid else "Impossible")
 
 
 kfc(int(input()), int(input()))
