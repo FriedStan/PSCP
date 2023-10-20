@@ -1,10 +1,3 @@
-'''asds'''
-class Dog(object):
-    '''asdas'''
-    def __init__(self, name):
-        '''sdf'''
-        self.name = name
-    age = 4
-
-Puddle = Dog('honghong')
-print(Puddle.name)
+for _ in range(100):
+    print(1)
+print("ENTER")
