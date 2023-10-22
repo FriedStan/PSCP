@@ -14,9 +14,14 @@ def this_is_a_pong(ducks):
         need = target - i
         side_a = coop.get(need, 0)
         side_b = coop.get(i, 0)
-        if (i, need) not in hof and (need != i or side_a > 1 or side_b > 1) and need in coop:
-            paired += side_a * side_b
-            hof.update({(need, i): '', (i, need): ''})
+        if (i, need) not in hof:
+            if side_a == side_b and side_a != 0 and side_b != 0 and i == need:
+                for i in range(1, side_a):
+                    paired += i
+                hof.update({(need, i): '', (i, need): ''})
+            elif i in coop and need in coop:
+                paired += side_a * side_b
+                hof.update({(need, i): '', (i, need): ''})
     print(paired)
 
 
